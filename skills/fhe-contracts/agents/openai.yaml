@@ -1,0 +1,4 @@
+interface:
+  display_name: "FHE Contract Ops"
+  short_description: "Zama FHEVM + Fhenix CoFHE Hardhat workflows"
+  default_prompt: "Use Zama's FHEVM Hardhat template and Fhenix CoFHE starter to plan, implement, deploy, and troubleshoot FHE-enabled Solidity contracts."
