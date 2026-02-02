@@ -22,6 +22,13 @@ skills/fhe-contracts/scripts/run_fhe_checks.sh --skip-fhevm
 ```
 Each block installs dependencies if `node_modules` is missing, compiles, and runs the repo's default test suite.
 
+## Token Smoke Tests
+```bash
+skills/fhe-contracts/scripts/run_zama_token_tests.sh
+skills/fhe-contracts/scripts/run_fhenix_token_tests.sh
+```
+Run these after any encrypted ERC20 changes to validate transfer + decrypt behavior in both stacks.
+
 ## Manual Evaluation Matrix
 | Stage | Zama FHEVM | Fhenix CoFHE |
 | --- | --- | --- |

@@ -24,6 +24,15 @@ Use this skill whenever a request involves:
 | Zama FHEVM | `/Users/tomas/zama/contracts/fhevm-hardhat-template` | Node 20+, npm, `@fhevm/hardhat-plugin`, `hardhat-deploy`, FHEVM CLI | Confidential ERC20s, encrypted pools/DAO logic, FHEVM frontends |
 | Fhenix CoFHE | `/Users/tomas/zama/fhenix-contracts/cofhe-hardhat-starter` | Node 18+, pnpm, `cofhe-hardhat-plugin`, `cofhejs`, localcofhe backend | CoFHE counter demo, encrypted DEX flows, MOCK/LOCAL/TESTNET validation |
 
+## Skill Architecture
+- `SKILL.md`: entrypoint with workflows and navigation.
+- `_sections.md`: canonical outline for future expansions.
+- `_template.md`: template for adding new rules or workflows.
+- `references/`: deep-dive docs (rules, signatures, tokens, ops inventory, evals).
+- `scripts/`: automation helpers (full checks and token test scripts).
+- `evals/`: evaluation notes and smoke checks.
+- `agents/`: agent-specific metadata (`openai.yaml`, `claude.yaml`, `codex.yaml`, `cursor.yaml`).
+
 ## FHE Safety and Math Rules
 Violating these rules either fails at compile time or leaks plaintext. Keep `references/fhe-rules.md` open for the
 full rulebook and code snippets.
@@ -128,7 +137,7 @@ add new FHE operations by rerunning:
 - `rg -n "FHE\." /Users/tomas/zama/fhenix-contracts/cofhe-hardhat-starter/contracts`
 
 ## Testing and Evaluation
-Automate both repos with `skills/fhe-contracts/scripts/run_fhe_checks.sh` (pass `--skip-fhevm` / `--skip-cofhe` to limit scope). For deeper evaluation matrices and reporting templates see `references/fhe-evals.md`.
+Automate both repos with `skills/fhe-contracts/scripts/run_fhe_checks.sh` (pass `--skip-fhevm` / `--skip-cofhe` to limit scope). Token-specific smoke tests live in `scripts/run_zama_token_tests.sh` and `scripts/run_fhenix_token_tests.sh`. For deeper evaluation matrices and reporting templates see `references/fhe-evals.md`.
 
 ### Zama FHEVM
 - `npm run compile` (contract-sizer on) and `npm run test` for unit coverage.
@@ -158,6 +167,7 @@ Automate both repos with `skills/fhe-contracts/scripts/run_fhe_checks.sh` (pass 
 | Encrypt in tests | `await fhevm.createEncryptedInput(...)` | `await cofhejs.encrypt(...)` |
 | Decrypt in tests | `await fhevm.userDecryptEuint(...)` | `await cofhejs.unseal(...)` |
 | Full CI sweep | `skills/fhe-contracts/scripts/run_fhe_checks.sh --skip-cofhe` | `skills/fhe-contracts/scripts/run_fhe_checks.sh --skip-fhevm` |
+| Token tests | `skills/fhe-contracts/scripts/run_zama_token_tests.sh` | `skills/fhe-contracts/scripts/run_fhenix_token_tests.sh` |
 
 **Helper script**: `scripts/run_fhe_checks.sh` installs dependencies (if missing), compiles, and runs tests for both repos. Pass `--skip-*` flags to focus on one stack.
 

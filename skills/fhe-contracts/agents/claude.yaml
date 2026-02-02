@@ -1,0 +1,4 @@
+interface:
+  display_name: "FHE Contract Ops"
+  short_description: "FHEVM + CoFHE rules, tests, and deployments"
+  default_prompt: "Use $fhe-contracts to apply FHE math rules, handle proofs/signatures, and ship Zama/Fhenix contract changes safely."

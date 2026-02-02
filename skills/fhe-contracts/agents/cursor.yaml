@@ -1,0 +1,4 @@
+interface:
+  display_name: "FHE Contract Ops"
+  short_description: "FHEVM/CoFHE dev + testing playbook"
+  default_prompt: "Use $fhe-contracts to guide encrypted smart-contract development, including deploy, test, and troubleshooting steps."
