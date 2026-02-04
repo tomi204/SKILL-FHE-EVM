@@ -4,7 +4,7 @@
 - One sentence describing the rule or workflow.
 
 ## Scope (optional)
-- Bullet list of applicability constraints.
+- Bullet list of applicability constraints (protocol, repo, network).
 
 ## Preconditions
 - Required networks, env vars, or prior steps.
@@ -32,4 +32,4 @@
 - Known failure modes and recovery tips.
 
 ## References
-- Link to a file under `references/`.
+- Link to file(s) under `references/` that contain the full details.
