@@ -57,6 +57,7 @@ SKILL.md is a concise index; detailed procedures live in the references.
 - `references/fhe-ops-catalog.md` - complete library-level function list for both protocols
 - `references/fhe-ops-usage-map.md` - file/line references for every `FHE.*` call in both contract trees
 - `references/fhe-ops-inventory.md` - quick inventory of ops actually used in repos
+- `references/fhe-library-map.md` - which contracts import which FHE library (Zama vs Fhenix)
 
 ### Testing and evaluation
 - `references/fhe-evals.md` - manual evaluation checklist and reporting template
