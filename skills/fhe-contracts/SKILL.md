@@ -124,7 +124,8 @@ Use `references/fhe-tokens.md` for full deploy, transfer, and test recipes.
 
 ## FHE Operations Inventory
 Use `references/fhe-ops-catalog.md` for the complete library-level function list (all available FHE operations),
-and `references/fhe-ops-inventory.md` for the operations actually used in the two repos. Update the inventory
+`references/fhe-ops-inventory.md` for the operations actually used in the two repos, and
+`references/fhe-ops-usage-map.md` for the exact file/line references where each op appears. Update the inventory
 whenever you add new FHE operations by rerunning:
 - `rg -n "FHE\." /Users/tomas/zama/contracts/fhevm-hardhat-template/contracts`
 - `rg -n "FHE\." /Users/tomas/zama/fhenix-contracts/cofhe-hardhat-starter/contracts`
@@ -176,6 +177,7 @@ are required; all commands are listed there.
 - `references/fhe-tokens.md` - encrypted token standards, deploy/test recipes, encrypt/decrypt guidance
 - `references/fhe-ops-catalog.md` - complete library-level function list (all available FHE operations)
 - `references/fhe-ops-inventory.md` - inventory of FHE calls used in both repos (kept in sync with code)
+- `references/fhe-ops-usage-map.md` - per-op file/line references for both contract trees + protocol differences
 - `references/fhe-evals.md` - evaluation checklist and manual reporting template
 - `references/fhevm-hardhat.md` - Hardhat commands, deployment orchestrator, encrypted task breakdown for Zama FHEVM
 - `references/fhevm-client.md` - client-side encryption/decryption workflow, operator setup, proof handling, errors

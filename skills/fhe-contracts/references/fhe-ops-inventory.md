@@ -1,7 +1,8 @@
 # FHE Operations Inventory
 
 This file enumerates the FHE calls currently used in the two local repos. It is **not** the full protocol
-API; for the complete list of available operations see `references/fhe-ops-catalog.md`.
+API; for the complete list of available operations see `references/fhe-ops-catalog.md`. For exact file/line
+references by op, see `references/fhe-ops-usage-map.md`.
 Update this inventory whenever you add new FHE operations by re-running the ripgrep commands listed below.
 
 ## Zama FHEVM (fhevm-hardhat-template)
