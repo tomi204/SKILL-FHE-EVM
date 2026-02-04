@@ -25,7 +25,7 @@ const enc = await fhevm.createEncryptedInput(tokenAddr, sender.address)
 await token["confidentialTransfer(address,bytes32,bytes)"](to, enc.handles[0], enc.inputProof)
 ```
 - `FHE.fromExternal` on-chain validates the `inputProof`.
- - Set operators before pool contracts move tokens (task: `cerc20:set-operator`).
+- Set operators before pool contracts move tokens (task: `cerc20:set-operator`).
 
 ### Decrypt Balance
 ```ts
@@ -40,10 +40,10 @@ const clear = await fhevm.userDecryptEuint(FhevmType.euint64, handle, tokenAddr,
   ```bash
   npx hardhat test --network localhost
   ```
- - Token-only run:
-   ```bash
-   npx hardhat test test/CERC20.ts --network localhost
-   ```
+- Token-only run:
+  ```bash
+  npx hardhat test test/CERC20.ts --network localhost
+  ```
 
 ## Fhenix CoFHE - FHERC20 (Fhenix confidential)
 **Standard**: `FHERC20` from `fhenix-confidential-contracts` (supports indicator balances and ticks).
@@ -67,7 +67,7 @@ await token["confidentialTransfer(address,(uint256,uint8,uint8,bytes))"](to, enc
 ```
 - For `confidentialTransferFrom`, pass the same struct as the amount and include `from`.
 - The CoFHE runtime validates `ctHash`, `securityZone`, `utype`, `signature` automatically.
- - Use `confidentialApprove` / allowance flows before calling `confidentialTransferFrom`.
+- Use `confidentialApprove` / allowance flows before calling `confidentialTransferFrom`.
 
 ### Decrypt Balance
 - Mock environment (tests):
@@ -84,10 +84,10 @@ await token["confidentialTransfer(address,(uint256,uint8,uint8,bytes))"](to, enc
 - `test/CERC20.test.ts` uses helpers from `test/helpers/fhenix.ts`:
   - `initializeCofhe`, `encryptU64`, `decryptBalance`, `expectFHERC20BalancesChange`
 - Tests are MOCK-only by default; `skipIfNotMock(this)` guards suites.
- - Token-only run:
-   ```bash
-   pnpm test -- test/CERC20.test.ts
-   ```
+- Token-only run:
+  ```bash
+  pnpm test -- test/CERC20.test.ts
+  ```
 
 ## Common Pitfalls
 - Do not divide ciphertexts for ERC7984 or FHERC20; decrypt first.
