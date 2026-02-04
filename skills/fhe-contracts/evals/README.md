@@ -1,14 +1,15 @@
 # FHE Skill Evaluations
 
 Use these eval notes to validate that the skill remains accurate after updates.
-Pair this with `references/fhe-evals.md` and the scripts in `scripts/`.
+Pair this with `references/fhe-evals.md` for the full manual command list.
 
-## Token Smoke Tests
-- Zama: `scripts/run_zama_token_tests.sh` (requires a running Hardhat node)
-- Fhenix: `scripts/run_fhenix_token_tests.sh` (MOCK mode by default)
+## Token Smoke Tests (manual)
+- Zama: `npx hardhat test test/CERC20.ts --network localhost`
+- Fhenix: `pnpm test -- test/CERC20.test.ts`
 
-## Full Regression
-- Run `scripts/run_fhe_checks.sh` to compile and test both repos.
+## Full Regression (manual)
+- Zama: `npm run compile && npm run test`
+- Fhenix: `pnpm compile && pnpm test` (add `pnpm test:localcofhe` for LOCAL)
 
 ## Manual Spot Checks
 1. Encrypt + transfer on each stack.

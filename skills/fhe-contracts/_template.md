@@ -3,8 +3,8 @@
 ## Summary
 - One sentence describing the rule or workflow.
 
-## When to Use
-- Bullet list of triggering conditions.
+## Scope (optional)
+- Bullet list of applicability constraints.
 
 ## Preconditions
 - Required networks, env vars, or prior steps.

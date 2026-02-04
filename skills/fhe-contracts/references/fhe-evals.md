@@ -1,7 +1,7 @@
 # FHE Evaluation Playbook
 
 Use this reference when verifying that encrypted contracts compile, tests cover the right branches, and
-runtime invariants hold. Pair this with `scripts/run_fhe_checks.sh` for automation.
+runtime invariants hold. This is a markdown-only checklist; follow the manual commands below.
 
 ## Pre-flight Checklist
 1. Node 20+ installed for FHEVM, Node 18+ + pnpm for CoFHE.
@@ -9,25 +9,37 @@ runtime invariants hold. Pair this with `scripts/run_fhe_checks.sh` for automati
 3. Local daemons running (Hardhat node or localcofhe) when executing integration tests.
 4. Fresh deployments artifacts available (`deployments/<network>.json`).
 
-## Automated Runs
+## Manual Runs (no skill scripts)
+### Zama FHEVM
 ```bash
-# Run everything
-skills/fhe-contracts/scripts/run_fhe_checks.sh
-
-# Only FHEVM
-skills/fhe-contracts/scripts/run_fhe_checks.sh --skip-cofhe
-
-# Only CoFHE
-skills/fhe-contracts/scripts/run_fhe_checks.sh --skip-fhevm
+cd /Users/tomas/zama/contracts/fhevm-hardhat-template
+npm install
+npm run compile
+npm run test
+npx hardhat test --network localhost
 ```
-Each block installs dependencies if `node_modules` is missing, compiles, and runs the repo's default test suite.
 
-## Token Smoke Tests
+### Fhenix CoFHE
 ```bash
-skills/fhe-contracts/scripts/run_zama_token_tests.sh
-skills/fhe-contracts/scripts/run_fhenix_token_tests.sh
+cd /Users/tomas/zama/fhenix-contracts/cofhe-hardhat-starter
+pnpm install
+pnpm compile
+pnpm test
+pnpm test:localcofhe
 ```
-Run these after any encrypted ERC20 changes to validate transfer + decrypt behavior in both stacks.
+
+## Token Smoke Tests (manual)
+### Zama ERC7984
+```bash
+cd /Users/tomas/zama/contracts/fhevm-hardhat-template
+npx hardhat test test/CERC20.ts --network localhost
+```
+
+### Fhenix FHERC20
+```bash
+cd /Users/tomas/zama/fhenix-contracts/cofhe-hardhat-starter
+pnpm test -- test/CERC20.test.ts
+```
 
 ## Manual Evaluation Matrix
 | Stage | Zama FHEVM | Fhenix CoFHE |

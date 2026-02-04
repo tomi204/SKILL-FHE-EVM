@@ -11,13 +11,6 @@ Zama's FHEVM template and Fhenix's CoFHE starter. It encodes non-negotiable math
 encryption APIs, runnable helper scripts, evaluation workflows, and debugging routines so every agent respects
 ciphertext constraints while shipping features.
 
-## Trigger Conditions
-Use this skill whenever a request involves:
-- Any work inside `/Users/tomas/zama/contracts/fhevm-hardhat-template` or `/Users/tomas/zama/fhenix-contracts/cofhe-hardhat-starter`
-- Encrypting parameters, decrypting results, handling FHE proofs, or reasoning about ciphertext legality
-- Writing/testing Solidity (or TypeScript tasks) that operate on FHEVM `euint*` types or CoFHE ciphertexts
-- Deploying or testing confidential tokens, pools, counters, or FHE client flows
-
 ## Protocol Map
 | Protocol | Repo | Tooling | Typical Uses |
 | --- | --- | --- | --- |
@@ -28,10 +21,10 @@ Use this skill whenever a request involves:
 - `SKILL.md`: entrypoint with workflows and navigation.
 - `_sections.md`: canonical outline for future expansions.
 - `_template.md`: template for adding new rules or workflows.
-- `references/`: deep-dive docs (rules, signatures, tokens, ops inventory, evals).
-- `scripts/`: automation helpers (full checks and token test scripts).
-- `evals/`: evaluation notes and smoke checks.
+- `references/`: deep-dive docs (rules, signatures, tokens, full ops catalog, ops inventory, evals).
+- `evals/`: evaluation notes and reporting templates.
 - `agents/`: agent-specific metadata (`openai.yaml`, `claude.yaml`, `codex.yaml`, `cursor.yaml`).
+- `scripts/` (optional): automation helpers. The skill works fully without scripts; ignore or delete if you want doc-only usage.
 
 ## FHE Safety and Math Rules
 Violating these rules either fails at compile time or leaks plaintext. Keep `references/fhe-rules.md` open for the
@@ -71,8 +64,8 @@ Use `references/fhe-signatures.md` for the full details and examples.
 
 ### Fhenix (CoFHE)
 - **Input signatures**: `cofhejs.encrypt` returns `{ ctHash, securityZone, utype, signature }`. These fields are
-  embedded in `InEuint64` inputs and validated by the CoFHE runtime (see `scripts/test-encrypt.ts` for
-  `TaskManager.verifyInput`).
+  embedded in `InEuint64` inputs and validated by the CoFHE runtime (see
+  `/Users/tomas/zama/fhenix-contracts/cofhe-hardhat-starter/scripts/test-encrypt.ts` for `TaskManager.verifyInput`).
 - **Reserve verification**: contracts request decryption via `FHE.decrypt(...)` and later read results with
   `FHE.getDecryptResultSafe`. They compare the decrypted values to the caller-provided cleartext to confirm
   correctness (see `contracts/EPOOL.sol::_validateLiquidityParams` and `_validateSwapParams`).
@@ -130,14 +123,15 @@ Use `references/fhe-tokens.md` for full deploy, transfer, and test recipes.
 7. **Persist artifacts**: update `deployments/<network>.json`, `deployments-summary.json`, or Ignition outputs so downstream consumers use the latest addresses.
 
 ## FHE Operations Inventory
-Use `references/fhe-ops-inventory.md` for the full inventory of FHE functions used in both repos, grouped by
-category (arithmetic, comparisons, allow/permit, decrypt, randomness, etc.). Update the inventory whenever you
-add new FHE operations by rerunning:
+Use `references/fhe-ops-catalog.md` for the complete library-level function list (all available FHE operations),
+and `references/fhe-ops-inventory.md` for the operations actually used in the two repos. Update the inventory
+whenever you add new FHE operations by rerunning:
 - `rg -n "FHE\." /Users/tomas/zama/contracts/fhevm-hardhat-template/contracts`
 - `rg -n "FHE\." /Users/tomas/zama/fhenix-contracts/cofhe-hardhat-starter/contracts`
 
 ## Testing and Evaluation
-Automate both repos with `skills/fhe-contracts/scripts/run_fhe_checks.sh` (pass `--skip-fhevm` / `--skip-cofhe` to limit scope). Token-specific smoke tests live in `scripts/run_zama_token_tests.sh` and `scripts/run_fhenix_token_tests.sh`. For deeper evaluation matrices and reporting templates see `references/fhe-evals.md`.
+Use `references/fhe-evals.md` for the full, manual evaluation checklist and reporting template. No skill scripts
+are required; all commands are listed there.
 
 ### Zama FHEVM
 - `npm run compile` (contract-sizer on) and `npm run test` for unit coverage.
@@ -153,7 +147,7 @@ Automate both repos with `skills/fhe-contracts/scripts/run_fhe_checks.sh` (pass 
 - Integration recipe: initialize cofhejs signer -> encrypt inputs using `Encryptable.uint*` helpers -> invoke task -> `cofhejs.unseal` outputs.
 - Use plugin helpers (`expectResultSuccess`, `expectResultValue`, `mock_expectPlaintext`) to assert ciphertext correctness without leaking data.
 
-## Command and Script Reference
+## Command Reference
 | Action | Zama FHEVM | Fhenix CoFHE |
 | --- | --- | --- |
 | Install deps | `npm install` | `pnpm install` |
@@ -166,10 +160,7 @@ Automate both repos with `skills/fhe-contracts/scripts/run_fhe_checks.sh` (pass 
 | Balance decrypt | `npx hardhat task:pool_balances --token TOKEN --network localhost` | `cofhejs.unseal(handle, FheTypes.Uint64)` |
 | Encrypt in tests | `await fhevm.createEncryptedInput(...)` | `await cofhejs.encrypt(...)` |
 | Decrypt in tests | `await fhevm.userDecryptEuint(...)` | `await cofhejs.unseal(...)` |
-| Full CI sweep | `skills/fhe-contracts/scripts/run_fhe_checks.sh --skip-cofhe` | `skills/fhe-contracts/scripts/run_fhe_checks.sh --skip-fhevm` |
-| Token tests | `skills/fhe-contracts/scripts/run_zama_token_tests.sh` | `skills/fhe-contracts/scripts/run_fhenix_token_tests.sh` |
-
-**Helper script**: `scripts/run_fhe_checks.sh` installs dependencies (if missing), compiles, and runs tests for both repos. Pass `--skip-*` flags to focus on one stack.
+| Token tests | `npx hardhat test test/CERC20.ts --network localhost` | `pnpm test -- test/CERC20.test.ts` |
 
 ## Troubleshooting and Recovery
 - **Ciphertext division attempts** -> decrypt to plaintext, compute, optionally re-encrypt.
@@ -183,8 +174,9 @@ Automate both repos with `skills/fhe-contracts/scripts/run_fhe_checks.sh` (pass 
 - `references/fhe-rules.md` - canonical list of allowed/forbidden ciphertext operations with do/dont snippets
 - `references/fhe-signatures.md` - proof and signature verification steps for Zama vs Fhenix
 - `references/fhe-tokens.md` - encrypted token standards, deploy/test recipes, encrypt/decrypt guidance
+- `references/fhe-ops-catalog.md` - complete library-level function list (all available FHE operations)
 - `references/fhe-ops-inventory.md` - inventory of FHE calls used in both repos (kept in sync with code)
-- `references/fhe-evals.md` - evaluation checklist, automation commands, manual reporting template
+- `references/fhe-evals.md` - evaluation checklist and manual reporting template
 - `references/fhevm-hardhat.md` - Hardhat commands, deployment orchestrator, encrypted task breakdown for Zama FHEVM
 - `references/fhevm-client.md` - client-side encryption/decryption workflow, operator setup, proof handling, errors
 - `references/fhenix-cofhe.md` - pnpm scripts, cofhejs usage, plugin utilities, LOCAL/MOCK/TESTNET guidance

@@ -48,8 +48,9 @@ FHE.checkSignatures(handles, abi.encode(ora, orb, ol), proof);
 ### Input Signatures (encrypted calldata)
 - `cofhejs.encrypt` returns a struct for each input:
   - `{ ctHash, securityZone, utype, signature }`
-- These fields are passed to contracts as `InEuint64` values.
-- The CoFHE runtime validates the signature automatically.
+- These fields are passed to contracts as `InEuint64` / `InEuint128` values.
+- On-chain validation happens when contracts call:
+  - `FHE.asEuint64(input)` / `FHE.asEuint128(input)` (the function checks `utype` and calls `Impl.verifyInput`).
 
 Example (Fhenix on-chain verify helper):
 ```ts
@@ -57,9 +58,10 @@ await taskManager.verifyInput({ ctHash, securityZone, utype, signature }, sender
 ```
 
 **Debugging hook**
-- `scripts/test-encrypt.ts` calls `TaskManager.verifyInput(...)` for on-chain validation of the signature.
-- `scripts/debug-bootstrap-detailed.ts` shows how to pass `ctHash`, `securityZone`, `utype`, and `signature`
-  to `confidentialTransferFrom` and pool bootstrap calls.
+- `/Users/tomas/zama/fhenix-contracts/cofhe-hardhat-starter/scripts/test-encrypt.ts` calls
+  `TaskManager.verifyInput(...)` for on-chain validation of the signature.
+- `/Users/tomas/zama/fhenix-contracts/cofhe-hardhat-starter/scripts/debug-bootstrap-detailed.ts` shows how to pass
+  `ctHash`, `securityZone`, `utype`, and `signature` to `confidentialTransferFrom` and pool bootstrap calls.
 
 ### Reserve Verification (on-chain decrypt results)
 - Contracts request decrypts via `FHE.decrypt(ciphertext)` after each state update.

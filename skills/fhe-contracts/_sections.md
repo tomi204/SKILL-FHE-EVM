@@ -3,7 +3,7 @@
 Use this file as the canonical outline when extending the FHE skill.
 Keep SKILL.md concise and move detail into references.
 
-1. Overview and Trigger Conditions
+1. Overview
 2. FHE Safety and Math Rules
 3. Signature and Proof Verification
 4. Token Standards (ERC7984, FHERC20)
