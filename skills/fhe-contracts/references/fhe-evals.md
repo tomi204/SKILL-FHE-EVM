@@ -2,6 +2,7 @@
 
 Use this reference when verifying that encrypted contracts compile, tests cover the right branches, and
 runtime invariants hold. This is a markdown-only checklist; follow the manual commands below.
+For canonical runnable test commands, use `fhe-tests.md`.
 
 ## Pre-flight Checklist
 1. Node 20+ installed for FHEVM, Node 18+ + pnpm for CoFHE.

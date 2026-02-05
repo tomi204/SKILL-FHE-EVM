@@ -10,7 +10,7 @@ Keep SKILL.md concise and move detail into references.
 5. Execution Workflow for Agents
 6. Non-Negotiable FHE Rules (summary)
 7. Reference Index
-8. Testing and Evaluation
+8. Testing and Evaluation (`fhe-tests.md`, `fhe-evals.md`)
 9. Troubleshooting
 10. Compatibility and First-Party Coverage
 

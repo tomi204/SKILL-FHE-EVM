@@ -1,7 +1,7 @@
 # FHE Skill Evaluations
 
 Use these eval notes to validate that the skill remains accurate after updates.
-Pair this with `references/fhe-evals.md` for the full manual command list.
+Pair this with `references/fhe-tests.md` for command execution and `references/fhe-evals.md` for evaluation criteria.
 
 ## Token Smoke Tests (manual)
 - Zama: `npx hardhat test test/CERC20.ts --network localhost`

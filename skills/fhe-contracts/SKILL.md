@@ -41,7 +41,8 @@ SKILL.md is a concise index; detailed procedures live in the references.
 5. If request asks "all ops" or "where used", load `fhe-ops-catalog.md`, `fhe-ops-usage-map.md`, and `fhe-library-map.md`.
 6. If request needs first-party-only coverage (excluding vendored contracts), load `fhe-ops-usage-first-party.md`.
 7. If request needs API compatibility/diff by operation name, load `fhe-op-compatibility.md`.
-8. Validate with `fhe-evals.md` and use `fhe-troubleshooting.md` only when failures appear.
+8. Run tests with `fhe-tests.md`, then evaluate/report with `fhe-evals.md`.
+9. Use `fhe-troubleshooting.md` only when failures appear.
 
 ## Non-Negotiable FHE Rules (summary)
 - Never divide ciphertext by ciphertext. Decrypt, divide, re-encrypt only if policy allows.
@@ -73,6 +74,7 @@ SKILL.md is a concise index; detailed procedures live in the references.
 - `references/fhe-op-compatibility.md` - shared vs protocol-specific operation names and translation guide
 
 ### Testing and evaluation
+- `references/fhe-tests.md` - canonical test commands for Zama and Fhenix (no skill scripts)
 - `references/fhe-evals.md` - manual evaluation checklist and reporting template
 
 ### Troubleshooting
