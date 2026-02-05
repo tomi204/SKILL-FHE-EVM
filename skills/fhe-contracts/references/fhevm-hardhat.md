@@ -4,6 +4,13 @@ Use this reference whenever you operate inside `/Users/tomas/zama/contracts/fhev
 It summarizes repo layout, encrypted workflows, and the commands required to manage FHE-enabled Solidity
 projects without re-reading every source file.
 
+## Quick Navigation
+- Setup and commands: `Install and Core Scripts`
+- Deploy pipeline: `Deployment Orchestrator`
+- Runtime usage: `Encrypt / Decrypt Workflow (Hardhat side)`
+- Proof model: `Proof and Signature Checks (Zama)`
+- Client integration: `Frontend / SDK Hooks`
+
 ## Quick Facts
 - Stack: Hardhat + TypeScript + `@fhevm/hardhat-plugin`, Solidity `0.8.27` (`viaIR`, optimizer 400, Cancun EVM).
 - Node: v20+ required. Repo ships `package-lock.json` and `bun.lock`.

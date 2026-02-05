@@ -33,6 +33,14 @@ SKILL.md is a concise index; detailed procedures live in the references.
 | Zama FHEVM | `/Users/tomas/zama/contracts/fhevm-hardhat-template` | Node 20+, npm, `@fhevm/hardhat-plugin` | Inputs validated via `FHE.fromExternal` + gateway proofs (`FHE.checkSignatures`). |
 | Fhenix CoFHE | `/Users/tomas/zama/fhenix-contracts/cofhe-hardhat-starter` | Node 18+, pnpm, `cofhe-hardhat-plugin` | Inputs validated via `FHE.asEuint*` on `InEuint*`; decrypt via `FHE.decrypt` + `getDecryptResultSafe`. |
 
+## Execution Workflow for Agents
+1. Identify the protocol first (Zama or Fhenix).
+2. Load only the matching protocol reference (`fhevm-hardhat.md` or `fhenix-cofhe.md`).
+3. If request touches proofs/signatures, load `fhe-signatures.md` and `fhe-protocol-diff.md`.
+4. If request touches token flows, load `fhe-tokens.md`.
+5. If request asks "all ops" or "where used", load `fhe-ops-catalog.md`, `fhe-ops-usage-map.md`, and `fhe-library-map.md`.
+6. Validate with `fhe-evals.md` and use `fhe-troubleshooting.md` only when failures appear.
+
 ## Non-Negotiable FHE Rules (summary)
 - Never divide ciphertext by ciphertext. Decrypt, divide, re-encrypt only if policy allows.
 - Never branch on ciphertext values in Solidity/TS; use plaintext or redesign.
@@ -44,6 +52,7 @@ SKILL.md is a concise index; detailed procedures live in the references.
 ### Core rules and proofs
 - `references/fhe-rules.md` - allowed/forbidden operations with examples
 - `references/fhe-signatures.md` - Zama `checkSignatures` vs Fhenix `asEuint*` + decrypt flow
+- `references/fhe-protocol-diff.md` - direct protocol-by-protocol FHE API and flow differences
 
 ### Protocol workflows
 - `references/fhevm-hardhat.md` - Zama Hardhat commands, deployments, tasks, client hooks

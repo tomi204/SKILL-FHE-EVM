@@ -1,4 +1,4 @@
 interface:
   display_name: "FHE Contract Ops"
-  short_description: "Encrypt/decrypt workflows for Zama + Fhenix"
-  default_prompt: "Use $fhe-contracts to implement encrypted ERC20 flows, run tests, and validate FHE proofs in both stacks."
+  short_description: "Zama + Fhenix FHE rules and protocol diffs"
+  default_prompt: "Use $fhe-contracts for protocol-aware FHE contract work: choose Zama/Fhenix flow, validate proofs/signatures, and verify FHE ops with the reference maps before editing."

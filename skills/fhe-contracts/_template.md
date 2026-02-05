@@ -6,6 +6,9 @@
 ## Scope (optional)
 - Bullet list of applicability constraints (protocol, repo, network).
 
+## Protocol Variant
+- Explicitly state whether this rule is `Zama`, `Fhenix`, or `Both`.
+
 ## Preconditions
 - Required networks, env vars, or prior steps.
 

@@ -3,6 +3,11 @@
 This file lists every FHE operation used in the contracts for each protocol, with exact file/line references.
 Use it when you need proof that an op is in use or want to navigate to the implementation quickly.
 
+## Navigation
+- Use `## Zama FHEVM Contract Ops` and `## Fhenix CoFHE Contract Ops` to jump by protocol.
+- Use `rg -n "^### <op>$" /Users/tomas/Documents/New project/skills/fhe-contracts/references/fhe-ops-usage-map.md` to jump to one operation.
+- This map includes first-party contracts and embedded vendor contracts (for Zama, `openzeppelin-confidential-contracts` is present under the same contracts tree).
+
 ## Zama FHEVM Contract Ops
 
 ### add

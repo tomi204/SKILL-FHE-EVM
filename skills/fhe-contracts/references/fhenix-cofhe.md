@@ -4,6 +4,13 @@ Reference for `/Users/tomas/zama/fhenix-contracts/cofhe-hardhat-starter`.
 It covers the starter layout, CLI entry points, and how `cofhejs` plus
 `cofhe-hardhat-plugin` are expected to run in MOCK/LOCAL/TESTNET environments.
 
+## Quick Navigation
+- Setup and commands: `Install and Scripts (pnpm)`
+- Task entry points: `Hardhat Tasks Summary`
+- Runtime and API usage: `cofhejs Usage Patterns`
+- Signature and decrypt model: `Input Signature Verification`, `Decryption Flow (CoFHE)`
+- Local backend lifecycle: `Local CoFHE Workflow`
+
 ## Quick Facts
 - Stack: Hardhat + TypeScript + `cofhe-hardhat-plugin`, Solidity `0.8.25` with `viaIR`.
 - Node: v18+ (pnpm preferred). Repo ships `package-lock.json`, `pnpm-lock.yaml`, and `bun.lock`.

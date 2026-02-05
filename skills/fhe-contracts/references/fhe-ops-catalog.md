@@ -12,6 +12,11 @@ an operation exists, which encrypted types it supports, and what it returns.
 If the libraries update, re-generate this catalog by parsing the two source files above and rewriting this file.
 A minimal approach is to scan for `function` lines inside `library FHE` and list the normalized signatures.
 
+## Navigation
+- Jump to `## Zama FHEVM` for Zama-only signatures.
+- Jump to `## Fhenix CoFHE` for Fhenix-only signatures.
+- Use `rg -n "^### <op>$" <file>` to jump to a specific operation heading.
+
 ## Zama FHEVM
 
 ### add
@@ -1382,4 +1387,3 @@ A minimal approach is to scan for `function` lines inside `library FHE` and list
 - `xor(euint32,euint32) -> (euint32)`
 - `xor(euint64,euint64) -> (euint64)`
 - `xor(euint8,euint8) -> (euint8)`
-

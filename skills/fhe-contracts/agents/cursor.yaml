@@ -1,4 +1,4 @@
 interface:
   display_name: "FHE Contract Ops"
-  short_description: "FHEVM/CoFHE dev + testing playbook"
-  default_prompt: "Use $fhe-contracts to guide encrypted smart-contract development, including deploy, test, and troubleshooting steps."
+  short_description: "Zama + Fhenix FHE rules and protocol diffs"
+  default_prompt: "Use $fhe-contracts for protocol-aware FHE contract work: choose Zama/Fhenix flow, validate proofs/signatures, and verify FHE ops with the reference maps before editing."
