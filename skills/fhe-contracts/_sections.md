@@ -12,5 +12,6 @@ Keep SKILL.md concise and move detail into references.
 7. Reference Index
 8. Testing and Evaluation
 9. Troubleshooting
+10. Compatibility and First-Party Coverage
 
 If you add a new domain, create a new reference doc and link it in SKILL.md.

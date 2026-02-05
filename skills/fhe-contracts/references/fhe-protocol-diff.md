@@ -1,7 +1,8 @@
 # Zama vs Fhenix FHE Differences
 
 Use this reference when comparing how the same concept is implemented in the two FHE stacks.
-Pair this with `fhe-library-map.md` (who imports which library) and `fhe-ops-catalog.md` (full signatures).
+Pair this with `fhe-library-map.md` (who imports which library), `fhe-ops-catalog.md` (full signatures),
+and `fhe-op-compatibility.md` (shared/unique op names).
 
 ## Library and Import Boundary
 - Zama contracts import `@fhevm/solidity/lib/FHE.sol`.
@@ -46,4 +47,3 @@ Pair this with `fhe-library-map.md` (who imports which library) and `fhe-ops-cat
 - Zama import references: `fhe-library-map.md` -> `Contract Imports (Zama FHEVM)`.
 - Fhenix import references: `fhe-library-map.md` -> `Contract Imports (Fhenix CoFHE)`.
 - Per-operation usage references (all `FHE.*` calls): `fhe-ops-usage-map.md`.
-

@@ -39,7 +39,9 @@ SKILL.md is a concise index; detailed procedures live in the references.
 3. If request touches proofs/signatures, load `fhe-signatures.md` and `fhe-protocol-diff.md`.
 4. If request touches token flows, load `fhe-tokens.md`.
 5. If request asks "all ops" or "where used", load `fhe-ops-catalog.md`, `fhe-ops-usage-map.md`, and `fhe-library-map.md`.
-6. Validate with `fhe-evals.md` and use `fhe-troubleshooting.md` only when failures appear.
+6. If request needs first-party-only coverage (excluding vendored contracts), load `fhe-ops-usage-first-party.md`.
+7. If request needs API compatibility/diff by operation name, load `fhe-op-compatibility.md`.
+8. Validate with `fhe-evals.md` and use `fhe-troubleshooting.md` only when failures appear.
 
 ## Non-Negotiable FHE Rules (summary)
 - Never divide ciphertext by ciphertext. Decrypt, divide, re-encrypt only if policy allows.
@@ -65,8 +67,10 @@ SKILL.md is a concise index; detailed procedures live in the references.
 ### FHE operations coverage (all ops + where used)
 - `references/fhe-ops-catalog.md` - complete library-level function list for both protocols
 - `references/fhe-ops-usage-map.md` - file/line references for every `FHE.*` call in both contract trees
+- `references/fhe-ops-usage-first-party.md` - file/line references for first-party contracts only
 - `references/fhe-ops-inventory.md` - quick inventory of ops actually used in repos
 - `references/fhe-library-map.md` - which contracts import which FHE library (Zama vs Fhenix)
+- `references/fhe-op-compatibility.md` - shared vs protocol-specific operation names and translation guide
 
 ### Testing and evaluation
 - `references/fhe-evals.md` - manual evaluation checklist and reporting template
