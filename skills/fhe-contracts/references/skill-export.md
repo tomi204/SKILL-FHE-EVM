@@ -22,6 +22,21 @@ cp -R skills/fhe-contracts ~/.codex/skills/
 ```
 Restart Codex after install so the skill is indexed.
 
+## Install in Claude
+Global install:
+```bash
+mkdir -p ~/.claude/skills
+git clone https://github.com/tomi204/SKILL-FHE-EVM.git /tmp/SKILL-FHE-EVM
+cp -R /tmp/SKILL-FHE-EVM/skills/fhe-contracts ~/.claude/skills/
+```
+Project-local install:
+```bash
+mkdir -p .claude/skills
+git clone https://github.com/tomi204/SKILL-FHE-EVM.git /tmp/SKILL-FHE-EVM
+cp -R /tmp/SKILL-FHE-EVM/skills/fhe-contracts .claude/skills/
+```
+Restart Claude (or reload the session) after install so it indexes the skill.
+
 ## Use in Any Repo
 - Invoke the skill by name (`fhe-contracts`) in prompts.
 - Resolve placeholders before running commands:
