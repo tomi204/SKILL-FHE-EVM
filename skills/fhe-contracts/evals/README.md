@@ -9,7 +9,7 @@ Pair this with `references/fhe-tests.md` for command execution and `references/f
 
 ## Full Regression (manual)
 - Zama: `npm run compile && npm run test`
-- Fhenix: `pnpm compile && pnpm test` (add `pnpm test:localcofhe` for LOCAL)
+- Fhenix: `pnpm compile && pnpm test` (add `pnpm localcofhe:test` for LOCAL)
 
 ## Manual Spot Checks
 1. Encrypt + transfer on each stack.

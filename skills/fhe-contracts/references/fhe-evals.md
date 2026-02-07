@@ -26,8 +26,9 @@ cd /Users/tomas/zama/fhenix-contracts/cofhe-hardhat-starter
 pnpm install
 pnpm compile
 pnpm test
-pnpm test:localcofhe
+pnpm localcofhe:test
 ```
+Note: localcofhe backend lifecycle is external in this repo; only `localcofhe:test` and `localcofhe:faucet` are exposed as runnable scripts.
 
 ## Token Smoke Tests (manual)
 ### Zama ERC7984
@@ -45,10 +46,10 @@ pnpm test -- test/CERC20.test.ts
 ## Manual Evaluation Matrix
 | Stage | Zama FHEVM | Fhenix CoFHE |
 | --- | --- | --- |
-| Lint/Type check | `npm run lint` (if available), `npx tsc --noEmit` | `pnpm lint`, `pnpm tsc --noEmit` |
+| Lint/Type check | `npm run lint`, `npx tsc --noEmit` | no lint script; use `npx tsc --noEmit` when needed |
 | Compile | `npm run compile` (contract-sizer on) | `pnpm compile` |
 | Unit tests | `npm run test` | `pnpm test` (MOCK) |
-| Integration | `npx hardhat test --network localhost`, CLI tasks | `pnpm test:localcofhe`, task scripts |
+| Integration | `npx hardhat test --network localhost`, CLI tasks | `pnpm localcofhe:test`, task scripts |
 | Deployment smoke | `npx hardhat run scripts/deploy/index.ts --network localhost` + `scripts/deploy/sanity.ts` | `npx hardhat full-flow --network localcofhe` |
 
 ## Assertion Targets

@@ -23,9 +23,10 @@ SKILL.md is a concise index; detailed procedures live in the references.
 
 ### Fhenix CoFHE
 1. `cd /Users/tomas/zama/fhenix-contracts/cofhe-hardhat-starter && pnpm install`
-2. `pnpm localcofhe:start` (LOCAL) or set RPCs for TESTNET
-3. `npx hardhat full-flow --network localcofhe`
-4. Read `references/fhenix-cofhe.md` and `references/fhe-signatures.md` before editing FHE logic.
+2. `pnpm test` for MOCK baseline (most suites are MOCK-gated)
+3. `pnpm localcofhe:test` for LOCAL integration (requires an already-running localcofhe backend)
+4. `npx hardhat full-flow --network localcofhe` for end-to-end LOCAL flow
+5. Read `references/fhenix-cofhe.md` and `references/fhe-signatures.md` before editing FHE logic.
 
 ## Protocol Map
 | Protocol | Repo | Tooling | Notes |

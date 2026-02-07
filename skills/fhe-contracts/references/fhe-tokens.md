@@ -88,6 +88,10 @@ await token["confidentialTransfer(address,(uint256,uint8,uint8,bytes))"](to, enc
   ```bash
   pnpm test -- test/CERC20.test.ts
   ```
+- LOCAL integration variant (may skip MOCK-only cases by design):
+  ```bash
+  npx hardhat test test/CERC20.test.ts --network localcofhe
+  ```
 
 ## Common Pitfalls
 - Do not divide ciphertexts for ERC7984 or FHERC20; decrypt first.

@@ -6,7 +6,7 @@ Use this file for test execution. It is command-only guidance and does not rely 
 - Zama repo: `/Users/tomas/zama/contracts/fhevm-hardhat-template`
 - Fhenix repo: `/Users/tomas/zama/fhenix-contracts/cofhe-hardhat-starter`
 - Zama runtime node available for localhost integration tests (`npx hardhat node` or `anvil`)
-- Fhenix local backend available for LOCAL mode (`pnpm localcofhe:start`) when needed
+- Fhenix localcofhe backend reachable for LOCAL mode (`pnpm localcofhe:test`) when needed
 
 ## Zama FHEVM Tests
 ### Install and baseline
@@ -47,9 +47,15 @@ pnpm test
 ### LOCAL backend integration
 ```bash
 cd /Users/tomas/zama/fhenix-contracts/cofhe-hardhat-starter
-pnpm localcofhe:start
-pnpm test:localcofhe
+pnpm localcofhe:faucet
+pnpm localcofhe:test
 ```
+The current repo does not define runnable `localcofhe:start` / `localcofhe:stop` npm scripts; run backend lifecycle externally.
+
+### MOCK vs LOCAL behavior
+- Most Fhenix tests are MOCK-gated with `skipIfNotMock(this)` from `test/helpers/fhenix.ts`.
+- `pnpm test` is the canonical deterministic regression path for this repo (MOCK backend).
+- `pnpm localcofhe:test` is for LOCAL integration, and MOCK-gated suites may skip by design.
 
 ### Token-focused (FHERC20 / CERC20)
 ```bash
@@ -73,4 +79,3 @@ npx hardhat full-flow --network localcofhe
 - Decryption not ready (Fhenix): wait for decrypt result and retry.
 - Operator errors: re-run token operator/approval setup before pool/token actions.
 - Detailed recovery guide: `fhe-troubleshooting.md`.
-

@@ -24,14 +24,11 @@ It covers the starter layout, CLI entry points, and how `cofhejs` plus
 pnpm install
 pnpm compile
 pnpm clean
-pnpm test              # runs against default (MOCK) if not overridden
-pnpm test:localcofhe   # smoke tests using the local CoFHE backend
-
-# Local network lifecycle
-pnpm localcofhe:start
-pnpm localcofhe:stop
-pnpm localcofhe:faucet          # funds configured wallet
+pnpm test              # MOCK backend (default). Most suites are MOCK-gated.
+pnpm localcofhe:test   # LOCAL backend integration tests (when localcofhe RPC is reachable)
+pnpm localcofhe:faucet # funds configured wallet on localcofhe
 ```
+This repo does not expose runnable `localcofhe:start`/`localcofhe:stop` npm scripts; manage backend lifecycle outside npm scripts.
 
 ## Running Hardhat Tasks
 Tasks are registered in `tasks/`. Invoke them with:
@@ -107,17 +104,18 @@ Contracts request decryption with `FHE.decrypt(ciphertext)` and later read resul
   encrypted and indicated balances without leaking plaintext.
 
 ## Local CoFHE Workflow
-1. `pnpm localcofhe:start` - spins up whitelisted local backend. Wait for health logs.
+1. Start localcofhe backend using your external runtime setup; ensure RPC is reachable before running LOCAL tests.
 2. `MNEMONIC`: store via `npx hardhat vars set MNEMONIC` (seed can remain the test mnemonic shipped in config).
-3. `pnpm localcofhe:faucet` - ensures deployer wallet is funded.
-4. `npx hardhat deploy-tokens --network localcofhe` (or `full-flow`) to seed contracts.
-5. Stop services with `pnpm localcofhe:stop` to free ports/resources.
+3. `pnpm localcofhe:faucet` to fund the deployer wallet.
+4. `pnpm localcofhe:test` for LOCAL test runs; use `npx hardhat full-flow --network localcofhe` for end-to-end smoke.
+5. For deterministic CI or when backend is unavailable, run `pnpm test` (MOCK).
 
 ## Testing Tips
 - For deterministic CI, run `pnpm test` (MOCK backend). Guard tests with
   `if (!isPermittedCofheEnvironment(hre, 'MOCK')) return;` inside each suite.
 - When talking to localcofhe or testnets, call `cofhejs_initializeWithHardhatSigner` once in `before` hooks.
 - Use `await hre.cofhe.mocks.getPlaintext(...)` only in MOCK tests, never in production flows.
+- Many suites use `skipIfNotMock(this)` from `test/helpers/fhenix.ts`, so LOCAL runs intentionally skip MOCK-only cases.
 
 ## Ignition Modules
 `ignition/` contains Hardhat Ignition configs for structured deployments. They are optional because the tasks

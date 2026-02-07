@@ -43,6 +43,14 @@ and `fhe-op-compatibility.md` (shared/unique op names).
 | Encrypted fungible base | `ERC7984` (OpenZeppelin confidential) | `FHERC20` (fhenix-confidential-contracts) |
 | Local token implementation | `/Users/tomas/zama/contracts/fhevm-hardhat-template/contracts/tokens/CERC20.sol` | `/Users/tomas/zama/fhenix-contracts/cofhe-hardhat-starter/contracts/tokens/CERC20.sol` |
 
+## Testing Model Differences
+| Concern | Zama FHEVM | Fhenix CoFHE |
+| --- | --- | --- |
+| Canonical regression command | `npm run test` | `pnpm test` |
+| Local integration command | `npx hardhat test --network localhost` | `pnpm localcofhe:test` |
+| Test gating pattern | integration-style tests often run against localhost node | many suites call `skipIfNotMock(this)` and are MOCK-only by default |
+| Local backend lifecycle in repo | explicit node process (`npx hardhat node`) | localcofhe backend lifecycle is external in current repo scripts |
+
 ## Which Contracts Use Which
 - Zama import references: `fhe-library-map.md` -> `Contract Imports (Zama FHEVM)`.
 - Fhenix import references: `fhe-library-map.md` -> `Contract Imports (Fhenix CoFHE)`.

@@ -33,7 +33,7 @@ It applies to both Zama FHEVM and Fhenix CoFHE.
 
 ### Local backend not running
 - **Symptom**: CLI tasks fail to initialize or encryption calls hang.
-- **Fix**: Ensure `npx hardhat node` (Zama) or `pnpm localcofhe:start` (Fhenix) is running and reachable.
+- **Fix**: Ensure `npx hardhat node` (Zama) or a reachable localcofhe backend (Fhenix) is running; validate with `pnpm localcofhe:test`.
 
 ### Noise budget exceeded
 - **Symptom**: Encrypted operations fail after deep multiplication chains.
