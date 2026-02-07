@@ -13,7 +13,7 @@ For canonical runnable test commands, use `fhe-tests.md`.
 ## Manual Runs (no skill scripts)
 ### Zama FHEVM
 ```bash
-cd /Users/tomas/zama/contracts/fhevm-hardhat-template
+cd <ZAMA_REPO>
 npm install
 npm run compile
 npm run test
@@ -22,7 +22,7 @@ npx hardhat test --network localhost
 
 ### Fhenix CoFHE
 ```bash
-cd /Users/tomas/zama/fhenix-contracts/cofhe-hardhat-starter
+cd <FHENIX_REPO>
 pnpm install
 pnpm compile
 pnpm test
@@ -33,13 +33,13 @@ Note: localcofhe backend lifecycle is external in this repo; only `localcofhe:te
 ## Token Smoke Tests (manual)
 ### Zama ERC7984
 ```bash
-cd /Users/tomas/zama/contracts/fhevm-hardhat-template
+cd <ZAMA_REPO>
 npx hardhat test test/CERC20.ts --network localhost
 ```
 
 ### Fhenix FHERC20
 ```bash
-cd /Users/tomas/zama/fhenix-contracts/cofhe-hardhat-starter
+cd <FHENIX_REPO>
 pnpm test -- test/CERC20.test.ts
 ```
 

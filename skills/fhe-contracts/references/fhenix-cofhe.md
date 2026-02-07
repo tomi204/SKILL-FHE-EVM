@@ -1,6 +1,6 @@
 # Fhenix CoFHE Hardhat Starter
 
-Reference for `/Users/tomas/zama/fhenix-contracts/cofhe-hardhat-starter`.
+Reference for `<FHENIX_REPO>`.
 It covers the starter layout, CLI entry points, and how `cofhejs` plus
 `cofhe-hardhat-plugin` are expected to run in MOCK/LOCAL/TESTNET environments.
 

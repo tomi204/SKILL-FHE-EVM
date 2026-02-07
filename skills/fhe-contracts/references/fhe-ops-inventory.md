@@ -56,6 +56,6 @@ Update this inventory whenever you add new FHE operations by re-running the ripg
 ## How to Refresh This Inventory
 Run the following, then update this file with any new operations:
 ```bash
-rg -n "FHE\." /Users/tomas/zama/contracts/fhevm-hardhat-template/contracts
-rg -n "FHE\." /Users/tomas/zama/fhenix-contracts/cofhe-hardhat-starter/contracts
+rg -n "FHE\." <ZAMA_REPO>/contracts
+rg -n "FHE\." <FHENIX_REPO>/contracts
 ```

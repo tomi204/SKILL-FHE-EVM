@@ -1,6 +1,6 @@
 ---
 name: fhe-contracts
-description: End-to-end guidance for Fully Homomorphic Encryption smart contracts in Zama FHEVM and Fhenix CoFHE, including ciphertext rules, proof/signature validation, encrypted ERC20 standards, deploy/test workflows, and troubleshooting. Use when working in /Users/tomas/zama/contracts/fhevm-hardhat-template or /Users/tomas/zama/fhenix-contracts/cofhe-hardhat-starter, or when reasoning about FHE ops, encryption/decryption, or proofs.
+description: End-to-end guidance for Fully Homomorphic Encryption smart contracts in Zama FHEVM and Fhenix CoFHE, including ciphertext rules, proof/signature validation, encrypted ERC20 standards, deploy/test workflows, and troubleshooting. Use when working in ZAMA_REPO or FHENIX_REPO clones, or when reasoning about FHE ops, encryption/decryption, or proofs.
 ---
 
 # FHE Contract Ops
@@ -8,21 +8,28 @@ description: End-to-end guidance for Fully Homomorphic Encryption smart contract
 Use this skill to ship safe FHE Solidity and Hardhat workflows across Zama FHEVM and Fhenix CoFHE. The
 SKILL.md is a concise index; detailed procedures live in the references.
 
+## Portable Setup
+- Resolve `<ZAMA_REPO>` to your local clone of `zama-ai/fhevm-hardhat-template`.
+- Resolve `<FHENIX_REPO>` to your local clone of `fhenixprotocol/cofhe-hardhat-starter`.
+- If needed, clone first:
+  - `git clone https://github.com/zama-ai/fhevm-hardhat-template.git`
+  - `git clone https://github.com/fhenixprotocol/cofhe-hardhat-starter.git`
+
 ## When to Use
-- You are working inside `/Users/tomas/zama/contracts/fhevm-hardhat-template` or `/Users/tomas/zama/fhenix-contracts/cofhe-hardhat-starter`.
+- You are working inside `<ZAMA_REPO>` or `<FHENIX_REPO>`.
 - You must encrypt inputs, decrypt outputs, or validate proofs/signatures for FHE flows.
 - You are deploying or testing confidential ERC20 tokens (ERC7984 / FHERC20) or pool logic.
 - You need to confirm which FHE operations exist, how they differ by protocol, or where they appear in code.
 
 ## Quick Start (choose a stack)
 ### Zama FHEVM
-1. `cd /Users/tomas/zama/contracts/fhevm-hardhat-template && npm install`
+1. `cd <ZAMA_REPO> && npm install`
 2. `npx hardhat node` (or `anvil`) for a persistent RPC
 3. `npx hardhat run scripts/deploy/index.ts --network localhost`
 4. Read `references/fhevm-hardhat.md` and `references/fhe-signatures.md` before editing FHE logic.
 
 ### Fhenix CoFHE
-1. `cd /Users/tomas/zama/fhenix-contracts/cofhe-hardhat-starter && pnpm install`
+1. `cd <FHENIX_REPO> && pnpm install`
 2. `pnpm test` for MOCK baseline (most suites are MOCK-gated)
 3. `pnpm localcofhe:test` for LOCAL integration (requires an already-running localcofhe backend)
 4. `npx hardhat full-flow --network localcofhe` for end-to-end LOCAL flow
@@ -31,8 +38,8 @@ SKILL.md is a concise index; detailed procedures live in the references.
 ## Protocol Map
 | Protocol | Repo | Tooling | Notes |
 | --- | --- | --- | --- |
-| Zama FHEVM | `/Users/tomas/zama/contracts/fhevm-hardhat-template` | Node 20+, npm, `@fhevm/hardhat-plugin` | Inputs validated via `FHE.fromExternal` + gateway proofs (`FHE.checkSignatures`). |
-| Fhenix CoFHE | `/Users/tomas/zama/fhenix-contracts/cofhe-hardhat-starter` | Node 18+, pnpm, `cofhe-hardhat-plugin` | Inputs validated via `FHE.asEuint*` on `InEuint*`; decrypt via `FHE.decrypt` + `getDecryptResultSafe`. |
+| Zama FHEVM | `<ZAMA_REPO>` | Node 20+, npm, `@fhevm/hardhat-plugin` | Inputs validated via `FHE.fromExternal` + gateway proofs (`FHE.checkSignatures`). |
+| Fhenix CoFHE | `<FHENIX_REPO>` | Node 18+, pnpm, `cofhe-hardhat-plugin` | Inputs validated via `FHE.asEuint*` on `InEuint*`; decrypt via `FHE.decrypt` + `getDecryptResultSafe`. |
 
 ## Execution Workflow for Agents
 1. Identify the protocol first (Zama or Fhenix).
@@ -80,3 +87,6 @@ SKILL.md is a concise index; detailed procedures live in the references.
 
 ### Troubleshooting
 - `references/fhe-troubleshooting.md` - error recovery for proof, decryption, and operator failures
+
+### Sharing and portability
+- `references/skill-export.md` - publish and install this skill in other repos/machines/users

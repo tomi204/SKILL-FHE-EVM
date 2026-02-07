@@ -3,15 +3,15 @@
 Use this file for test execution. It is command-only guidance and does not rely on any skill-local scripts.
 
 ## Preconditions
-- Zama repo: `/Users/tomas/zama/contracts/fhevm-hardhat-template`
-- Fhenix repo: `/Users/tomas/zama/fhenix-contracts/cofhe-hardhat-starter`
+- Zama repo: `<ZAMA_REPO>`
+- Fhenix repo: `<FHENIX_REPO>`
 - Zama runtime node available for localhost integration tests (`npx hardhat node` or `anvil`)
 - Fhenix localcofhe backend reachable for LOCAL mode (`pnpm localcofhe:test`) when needed
 
 ## Zama FHEVM Tests
 ### Install and baseline
 ```bash
-cd /Users/tomas/zama/contracts/fhevm-hardhat-template
+cd <ZAMA_REPO>
 npm install
 npm run compile
 npm run test
@@ -19,26 +19,26 @@ npm run test
 
 ### Localhost integration
 ```bash
-cd /Users/tomas/zama/contracts/fhevm-hardhat-template
+cd <ZAMA_REPO>
 npx hardhat test --network localhost
 ```
 
 ### Token-focused (ERC7984 / CERC20)
 ```bash
-cd /Users/tomas/zama/contracts/fhevm-hardhat-template
+cd <ZAMA_REPO>
 npx hardhat test test/CERC20.ts --network localhost
 ```
 
 ### Deployment smoke
 ```bash
-cd /Users/tomas/zama/contracts/fhevm-hardhat-template
+cd <ZAMA_REPO>
 npx hardhat run scripts/deploy/index.ts --network localhost
 ```
 
 ## Fhenix CoFHE Tests
 ### Install and MOCK baseline
 ```bash
-cd /Users/tomas/zama/fhenix-contracts/cofhe-hardhat-starter
+cd <FHENIX_REPO>
 pnpm install
 pnpm compile
 pnpm test
@@ -46,7 +46,7 @@ pnpm test
 
 ### LOCAL backend integration
 ```bash
-cd /Users/tomas/zama/fhenix-contracts/cofhe-hardhat-starter
+cd <FHENIX_REPO>
 pnpm localcofhe:faucet
 pnpm localcofhe:test
 ```
@@ -59,13 +59,13 @@ The current repo does not define runnable `localcofhe:start` / `localcofhe:stop`
 
 ### Token-focused (FHERC20 / CERC20)
 ```bash
-cd /Users/tomas/zama/fhenix-contracts/cofhe-hardhat-starter
+cd <FHENIX_REPO>
 pnpm test -- test/CERC20.test.ts
 ```
 
 ### Full-flow smoke
 ```bash
-cd /Users/tomas/zama/fhenix-contracts/cofhe-hardhat-starter
+cd <FHENIX_REPO>
 npx hardhat full-flow --network localcofhe
 ```
 

@@ -5,8 +5,8 @@ It is the authoritative "all operations" list for agents and should be used when
 an operation exists, which encrypted types it supports, and what it returns.
 
 ## Sources (local library files)
-- Zama FHEVM: `/Users/tomas/zama/contracts/fhevm-hardhat-template/node_modules/@fhevm/solidity/lib/FHE.sol`
-- Fhenix CoFHE: `/Users/tomas/zama/fhenix-contracts/cofhe-hardhat-starter/node_modules/@fhenixprotocol/cofhe-contracts/FHE.sol`
+- Zama FHEVM: `<ZAMA_REPO>/node_modules/@fhevm/solidity/lib/FHE.sol`
+- Fhenix CoFHE: `<FHENIX_REPO>/node_modules/@fhenixprotocol/cofhe-contracts/FHE.sol`
 
 ## Refresh
 If the libraries update, re-generate this catalog by parsing the two source files above and rewriting this file.

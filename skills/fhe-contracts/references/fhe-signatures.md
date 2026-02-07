@@ -58,9 +58,9 @@ await taskManager.verifyInput({ ctHash, securityZone, utype, signature }, sender
 ```
 
 **Debugging hook**
-- `/Users/tomas/zama/fhenix-contracts/cofhe-hardhat-starter/scripts/test-encrypt.ts` calls
+- `<FHENIX_REPO>/scripts/test-encrypt.ts` calls
   `TaskManager.verifyInput(...)` for on-chain validation of the signature.
-- `/Users/tomas/zama/fhenix-contracts/cofhe-hardhat-starter/scripts/debug-bootstrap-detailed.ts` shows how to pass
+- `<FHENIX_REPO>/scripts/debug-bootstrap-detailed.ts` shows how to pass
   `ctHash`, `securityZone`, `utype`, and `signature` to `confidentialTransferFrom` and pool bootstrap calls.
 
 ### Reserve Verification (on-chain decrypt results)

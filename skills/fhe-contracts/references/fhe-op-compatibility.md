@@ -98,6 +98,6 @@ Pair this with `fhe-ops-catalog.md` for exact signatures and `fhe-protocol-diff.
 
 ## Refresh
 ```bash
-awk '/library FHE/{in=1;next} in && /^}/{in=0} in && $1=="function"{n=$2; sub(/\(.*/,"",n); print n}' /Users/tomas/zama/contracts/fhevm-hardhat-template/node_modules/@fhevm/solidity/lib/FHE.sol | sort -u
-awk '/library FHE/{in=1;next} in && /^}/{in=0} in && $1=="function"{n=$2; sub(/\(.*/,"",n); print n}' /Users/tomas/zama/fhenix-contracts/cofhe-hardhat-starter/node_modules/@fhenixprotocol/cofhe-contracts/FHE.sol | sort -u
+awk '/library FHE/{in=1;next} in && /^}/{in=0} in && $1=="function"{n=$2; sub(/\(.*/,"",n); print n}' <ZAMA_REPO>/node_modules/@fhevm/solidity/lib/FHE.sol | sort -u
+awk '/library FHE/{in=1;next} in && /^}/{in=0} in && $1=="function"{n=$2; sub(/\(.*/,"",n); print n}' <FHENIX_REPO>/node_modules/@fhenixprotocol/cofhe-contracts/FHE.sol | sort -u
 ```

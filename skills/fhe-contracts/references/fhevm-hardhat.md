@@ -1,6 +1,6 @@
 # Zama FHEVM Hardhat Template
 
-Use this reference whenever you operate inside `/Users/tomas/zama/contracts/fhevm-hardhat-template`.
+Use this reference whenever you operate inside `<ZAMA_REPO>`.
 It summarizes repo layout, encrypted workflows, and the commands required to manage FHE-enabled Solidity
 projects without re-reading every source file.
 

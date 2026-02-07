@@ -41,7 +41,7 @@ and `fhe-op-compatibility.md` (shared/unique op names).
 | Token track | Zama | Fhenix |
 | --- | --- | --- |
 | Encrypted fungible base | `ERC7984` (OpenZeppelin confidential) | `FHERC20` (fhenix-confidential-contracts) |
-| Local token implementation | `/Users/tomas/zama/contracts/fhevm-hardhat-template/contracts/tokens/CERC20.sol` | `/Users/tomas/zama/fhenix-contracts/cofhe-hardhat-starter/contracts/tokens/CERC20.sol` |
+| Local token implementation | `<ZAMA_REPO>/contracts/tokens/CERC20.sol` | `<FHENIX_REPO>/contracts/tokens/CERC20.sol` |
 
 ## Testing Model Differences
 | Concern | Zama FHEVM | Fhenix CoFHE |
